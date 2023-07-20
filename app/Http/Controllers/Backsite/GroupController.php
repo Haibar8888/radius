@@ -47,7 +47,7 @@ class GroupController extends Controller
         //
     //    $req = $request->all();
     //    dd($req);
-       $value = $request->download . '/' .$request->upload . 'M';
+       $value = $request->download .'M'.'/'.$request->upload .'M';
        
         $datas = Group::create([
             'groupname' => $request->groupname,
@@ -81,7 +81,12 @@ class GroupController extends Controller
     public function edit(Group $group)
     {
         //
-        return view('group.edit',compact('group'));
+        $value = explode('/',$group->value);
+
+        $down = $value[0];
+        $up = $value[1];
+        
+        return view('group.edit',compact('group','down','up'));
     }
 
     /**
@@ -91,9 +96,23 @@ class GroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Group $group)
     {
         //
+        $down = $request->download; 
+        $up = $request->upload;
+        $value = $down . '/' . $up;
+        
+         $group->update([
+            'groupname' => $request->groupname,
+            'attribute' => $request->attribute,
+            'op' => $request->op,
+            'value' => $value
+            ]
+        );
+        alert()->success('Success Message', 'Data group berhasil diedit');
+        return redirect()->route('group.index');
+
     }
 
     /**

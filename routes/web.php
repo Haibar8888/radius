@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // controller
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Backsite\GroupController;
+use App\Http\Controllers\Backsite\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +22,15 @@ Route::get('/', function () {
 });
 
 Route::prefix('backsite')->group(function () {
+
      // dashboard 
     Route::view('/dashboard','admin.dashboard');
+
     // Group
     Route::resource('/group',GroupController::class);
+
+    // user
+    Route::resource('/user',UserController::class);
 });
 
 

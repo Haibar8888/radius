@@ -20,7 +20,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Groupname</th>
+                    <th>Username</th>
                     <th>Attribute</th>
                     <th>OP</th>
                     <th>Value</th>
@@ -30,7 +30,7 @@
                   <tbody>
                     @foreach($datas as $data) 
                         <tr>
-                            <td>{{$data->groupname}}</td>
+                            <td>{{$data->username}}</td>
                             <td>{{$data->attribute}}</td>
                             <td>{{$data->op}}</td>
                             <td>{{$data->value}}</td>   
@@ -55,7 +55,7 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Groupname</th>
+                    <th>Username</th>
                     <th>Attribute</th>
                     <th>OP</th>
                     <th>Value</th>
