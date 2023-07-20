@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // controller
 use App\Http\Controllers\Admin\MovieController;
-
+use App\Http\Controllers\Backsite\GroupController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,18 +16,15 @@ use App\Http\Controllers\Admin\MovieController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('');
-// });
-Route::group(['prefix' => 'admin'], function () {
-    // dashboard 
-    Route::view('/','admin.dashboard');
-
-    // 
-    Route::group(['prefix' => 'movie'], function () {
-        // movies
-        Route::resource('/',MovieController::class);
-    });
-
+Route::get('/', function () {
+    return view('login.index');
 });
+
+Route::prefix('backsite')->group(function () {
+     // dashboard 
+    Route::view('/dashboard','admin.dashboard');
+    // Group
+    Route::resource('/group',GroupController::class);
+});
+
 

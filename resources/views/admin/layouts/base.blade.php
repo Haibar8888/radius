@@ -38,6 +38,9 @@
   {{-- navbar here --}}
     @include('admin.layouts.navbar')
 
+  {{-- sweeat alert --}}
+    @include('sweetalert::alert')
+
   {{-- sidebar here --}}
     @include('admin.layouts.sidebar')
 
